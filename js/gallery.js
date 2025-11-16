@@ -64,14 +64,14 @@ const images = [
   },
 ];
 
-const container = document.querySelector(`.js-gallery`);
+const container = document.querySelector(`.gallery`);
 
 document.addEventListener(`DOMContentLoaded`, () => {
   const markup = imagesTemplate(images);
   container.innerHTML = markup;
 });
 
-document.querySelector(".js-gallery").addEventListener("click", (event) => {
+document.querySelector(".gallery").addEventListener("click", (event) => {
   event.preventDefault();
 
   const link = event.target.closest(".gallery-link");
@@ -96,7 +96,7 @@ function imagesTemplate(images) {
   return images.map(imageTemplate).join(``);
 }
 
-const gallery = document.querySelector(".js-gallery");
+const gallery = document.querySelector(".gallery");
 
 gallery.addEventListener("click", (event) => {
   const img = event.target.closest("img");
