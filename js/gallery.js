@@ -64,18 +64,10 @@ const images = [
   },
 ];
 
-const container = document.querySelector(`.gallery`);
+const gallery = document.querySelector(`.gallery`);
 
 document.addEventListener(`DOMContentLoaded`, () => {
-  const markup = imagesTemplate(images);
-  container.innerHTML = markup;
-});
-
-document.querySelector(".gallery").addEventListener("click", (event) => {
-  event.preventDefault();
-
-  const link = event.target.closest(".gallery-link");
-  if (!link) return;
+  gallery.innerHTML = imagesTemplate(images);
 });
 
 function imageTemplate(image) {
@@ -96,12 +88,12 @@ function imagesTemplate(images) {
   return images.map(imageTemplate).join(``);
 }
 
-const gallery = document.querySelector(".gallery");
-
 gallery.addEventListener("click", (event) => {
-  const img = event.target.closest("img");
+  event.preventDefault();
 
-  if (!img || !gallery.contains(img)) return;
+  const img = event.target.closest(".gallery-image");
+
+  if (!img) return;
 
   const largeImageUrl = img.dataset.source;
 
